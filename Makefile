@@ -120,18 +120,23 @@ flash: all
 	-c "program $(BUILD_DIR)/$(APP).elf verify reset exit"
 
 # Debugging
+# Debugging
 debug: all
 	@echo "Starting OpenOCD..."
-	@nohup openocd -f interface/stlink.cfg -f target/stm32f4x.cfg \
-		> $(BUILD_DIR)/openocd.log 2>&1 &
+	@nohup openocd -f interface/stlink.cfg \
+	               -c "transport select swd" \
+	               -f target/stm32f4x.cfg \
+	               > $(BUILD_DIR)/openocd.log 2>&1 &
+
 	@sleep 2
+
 	@echo "Launching GDB..."
 	$(GDB) $(BUILD_DIR)/$(APP).elf \
 		-ex "target extended-remote localhost:3333" \
 		-ex "monitor reset halt" \
 		-ex "load" \
-		-ex "monitor reset init" \
-		-ex "continue"
+		-ex "monitor reset halt" \
+		-ex "set pagination off"
 
 kill_openocd:
 	@pkill -f openocd
