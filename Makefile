@@ -48,7 +48,9 @@ BUILD_DIR = Build/$(APP)
 # Source File Discovery
 SRCS := $(wildcard $(SRC_ROOT)/$(APP)/*.c) \
         $(foreach d,$(wildcard $(DRIVERS)/*),$(wildcard $(d)/*.c)) \
-        $(wildcard $(UTILS)/*.c)
+        $(wildcard $(UTILS)/*.c) \
+        $(wildcard $(CORE)/*.c) \
+        $(wildcard $(CORE)/*/*.c)
 
 ASMS := $(wildcard $(STARTUP)/*.s)
 
@@ -119,7 +121,6 @@ flash: all
 	openocd -f interface/stlink.cfg -f target/stm32f4x.cfg \
 	-c "program $(BUILD_DIR)/$(APP).elf verify reset exit"
 
-# Debugging
 # Debugging
 debug: all
 	@echo "Starting OpenOCD..."
