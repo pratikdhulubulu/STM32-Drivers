@@ -196,7 +196,7 @@ Reset_Handler:
 4:
 
     /* System init */
-    //bl SystemInit
+    bl SystemInit
 
     /* Call main */
     bl main
