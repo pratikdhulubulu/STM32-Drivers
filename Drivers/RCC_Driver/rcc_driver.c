@@ -217,6 +217,34 @@ void rccResetAPB1(uint32_t mask)
 }
 
 /**
+ * @brief This function enable APB2 peripheral clocks.
+ * @param mask Bitmask of peripherals to enable.
+ */
+void rccEnableAPB2(uint32_t mask)
+{
+    RCC->APB2ENR |= mask;
+}
+
+/**
+ * @brief This function disable APB2 peripheral clocks.
+ * @param mask Bitmask of peripherals to disable.
+ */
+void rccDisableAPB2(uint32_t mask)
+{
+    RCC->APB2ENR &= ~mask;
+}
+
+/**
+ * @brief This function reset APB2 peripherals.
+ * @param mask Bitmask of peripherals to reset.
+ */
+void rccResetAPB2(uint32_t mask)
+{
+    RCC->APB2RSTR |= mask;
+    RCC->APB2RSTR &= ~mask;
+}
+
+/**
  * @brief  This function returns current system clock (SYSCLK) frequency.
  * @return System clock in Hz.
  */
