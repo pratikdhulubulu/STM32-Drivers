@@ -13,7 +13,7 @@
 
 /**
  * @brief   System clock configuration.
- * @details Configures PLL to generate a 100 MHz system clock from 8 MHz HSE.
+ * @details Configures PLL to generate a 50 MHz system clock from 8 MHz HSE.
  */
 static const RCC_SYS_CFG clk_cfg =
 {
