@@ -1,8 +1,7 @@
 /**
  * @file    main.c
  * @author  Pratik Dhulubulu
- * @brief   Example usage of SysTick driver on STM32F446.
- * @details Demonstrates tick counting, delay, and global tick access.
+ * @brief   This file demonstrate the SysTick delay.
  */
 #include "stm32f446xx.h"
 #include "exti_driver.h"
@@ -109,7 +108,7 @@ int main(void)
 
     while (1)
     {
-
+        __NOP();
     }
 }
 
