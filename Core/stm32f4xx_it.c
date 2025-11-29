@@ -1,11 +1,20 @@
 /**
  * @file   stm32f4xx_it.c
- * @author 
+ * @author Pratik Dhulubulu
  * @brief  This file implements interrupt handlers for STM32F446xx.
  */
 
 #include "stm32f4xx_it.h"
 #include "exti_driver.h"
+#include "systick_driver.h"
+
+/**
+ * @section Exception Handlers.
+ */
+void SysTick_Handler(void)
+{
+    tick++;
+}
 
 /**
  * @section Peripheral Interrupt Handlers.
