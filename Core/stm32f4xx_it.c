@@ -7,6 +7,7 @@
 #include "stm32f4xx_it.h"
 #include "exti_driver.h"
 #include "systick_driver.h"
+#include "timer_driver.h"
 
 /**
  * @section Exception Handlers.
@@ -97,4 +98,14 @@ void EXTI15_10_IRQHandler(void)
     extiHandleIrq(13U);
     extiHandleIrq(14U);
     extiHandleIrq(15U);
+}
+
+/**
+ * @brief  Handles Timer 2 interrupt.
+ * @param  None
+ * @return None
+ */
+void TIM2_IRQHandler(void)
+{
+    timerHandleIrq(TIM2);
 }
